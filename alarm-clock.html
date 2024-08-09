@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alarm clock</title>
+  </head>
+  <body>
+    <input type="text" id="input" placeholder="hour" value="" required style="text-align: center;"  />
+    <input type="text" id="input1" placeholder="minute">
+    <button id="btn" onclick="alarm()" >set</button>
+    <p style="opacity: 30%;">fortmt: 00:00</p>
+    <h1 id="h1"></h1>
+    <h3 id="h3"></h3>
+    <audio id="audio"  autoplay   >
+        <source src="./audio/1623497765_L5sS6.mp3" type="audio/mp3" >
+    </audio>
+  </body>
+
+
+  <script type="text/javascript">
+
+    
+      function avr (...scores){
+          let total = 0 ;
+          for(score of scores ){
+            total +=score
+          }
+           let ad =  total / scores.length
+            return ad
+      }
+
+      
+        
+
+
+    function alarm (){
+
+    let date = new Date();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    minute = minute < 10 ? "0" + minute : minute;
+    hour = hour <10 ? "0" + hour : hour ;
+    let all = `${hour}:${minute}`
+      let value = document.getElementById("input").value;
+      let value1 = document.getElementById("input1").value;
+      let values = `${value}:${value1}`
+      let h1 = document.getElementById("h1").textContent = values
+
+      if (values === all) {
+        
+         let aud = document.getElementById("audio");
+         aud.autoplay = true
+         aud.load()
+         document.getElementById("h3").textContent = "its time to wake up dude"
+        //  alert("wake up");
+      }
+        
+
+        setTimeout(alarm ,50000)
+
+
+        }
+       
+        
+    
+
+  </script>
+</html>
+
